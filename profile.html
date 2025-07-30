@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>NAEBank</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="script.js" type="module" defer></script>
+    <script src="functions.js" type="module" defer></script>
+    
+</head>
+<body>
+    <div class="header-container">
+        <header>
+            <div class="cookie-warning">
+                <p>Мы используем cookie-файлы, чтобы вам было проще пользоваться сайтом. Если вы не согласны с их использованием, очистите их в настройках браузера и покиньте сайт. <button class="accept-cookies-button">ПОНЯЛ</button></p>
+            </div>
+            <div class="header-content">
+                <div class="header-block-title">
+                    <h2>NAEBank</h2>
+                </div>
+                <div class="header-block-login">
+                    <a href="/login.html" class="login-link">ЗАЛОГИНИТЬСЯ</a>
+                    <a class="login-p" href="/profile.html"></a>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <div class="wrapper">
+        <div class="container">
+            
+    <h1 class="username"></h1>
+    <button class="logout-button">РАЗЛОГИНИТЬСЯ</button>
+
+    <script type="module">
+        import { dbapi_baseurl } from './dbapi_baseurl.js';
+
+        let usernameLabel = document.querySelector('.username');
+        let logoutButton = document.querySelector('.logout-button');
+
+        logoutButton.addEventListener('click', async function (e) {
+            e.preventDefault();
+
+            document.cookie = 'usertoken=;path=/;';
+            alert('Вы усешно разлогинились');
+            window.location.replace('/');
+        });
+        
+        window.addEventListener('dataChanged', (e) => {
+            usernameLabel.innerHTML = window.username + ' - ' + window.userbalance;
+            console.log(window.username);
+            console.log(e);
+        });
+    </script>
+
+        </div>
+    </div>
+</body>
+</html>

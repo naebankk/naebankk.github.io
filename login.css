@@ -1,0 +1,4 @@
+.incorrect-password-message, .incorrect-user-message {
+    display: none;
+    color: red;
+}
